@@ -24,8 +24,95 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Daniel Koza</h1>
+					<ul>
+						<li> 2 years of JavaScript experience </li>
+						<li> AngularJS, Angular, Meteor, React... </li>
+						<li> Using Angular since RC </li>
+						<li> One (two) built appliaction in the Angular </li>
+						<li> Funtional programming fan </li>
+					</ul>
+				</section>
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>What is functional programming?</li>
+						<li>Functional programming in JavaScript world</li>
+						<li>Is whole Angular written in OOP style?</li>
+						<li>Functional programming in Angular - practical guide</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h1>What is functional programming?</h1>
+					</section>
+					<section>
+						<p cite="https://en.wikipedia.org/wiki/Functional_programming">
+						&ldquo;a <b><u>style</u></b> of building the structure and elements of computer programs — that treats computation as the evaluation of mathematical functions and <b><u>avoids changing-state and mutable data</u></b>. It is a declarative programming paradigm, which means programming is done with expressions or declarations instead of statements. In functional code, the output value of a function depends only on the arguments that are passed to the function.&rdquo;
+						</p>
+					</section>
+					<section>
+						<h3> Trends </h3>
+						<a href="https://trends.google.pl/trends/explore?date=all&q=functional%20programming,object%20oriented%20programming,oop" target="_blank">Global</a>
+						<a href="https://trends.google.pl/trends/explore?q=functional%20programming%20javascript,object%20oriented%20programming%20javascript,oop%20javascript" target="_blank">JavaScript</a>
+					</section>
+					<section>
+						<h3> Concepts </h3>
+					</section>
+					<section>
+						<h3> First-class and higher-order functions </h3>
+						<blockquote>Higher-order functions are functions that can either take other functions as arguments or return them as results.</blockquote>
+					</section>
+					<section>
+						<pre><code class="hljs" data-trim contenteditable>
+function callSomething(something) {
+  return something();
+}
+callSomething(() => 123); // 123
+						</code></pre>
+						<pre><code class="hljs" data-trim contenteditable>
+function add(a) {
+  return (b) => a+b;
+}
+add(2)(3); //5
+						</code></pre>
+					</section>
+					<section>
+						<h3> Pure functions </h3>
+						<blockquote>Pure functions (or expressions) have no side effects (memory or I/O). If the pure function is again called with the same arguments, the same result will be returned.</blockquote>
+					</section>
+					<section>
+						<pre><code class="hljs" data-trim contenteditable>
+function add(a, b) {
+  return a+b;
+}
+add(2,3); //5
+add(2,3); //5
+...
+add(2,3); //5
+						</code></pre>
+					</section>
+					<section>
+						<h3> Recursion </h3>
+						<blockquote> Recursive functions invoke themselves, allowing an operation to be performed over and over until the base case is reached.</blockquote>
+					</section>
+					<section>
+						<pre><code class="hljs" data-trim contenteditable>
+function sum(list, acc = 0) {
+  const lastItem = list.length - 1;
+  return lastItem === 0 ? 
+    list[0]+acc :
+    sum(list.slice(0, lastItem), acc+list[lastItem]);
+}
+sum([1,2,3,4]); //10
+						</code></pre>
+					</section>
+					<section>
+						<h3> Languages </h3>
+						<a href="https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Pure" target="_blank"> Functional programming languages</a>
+					</section>
+				</section>
 			</div>
 		</div>
 
