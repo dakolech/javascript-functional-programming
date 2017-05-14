@@ -39,7 +39,7 @@
 					<ul>
 						<li>What is functional programming?</li>
 						<li>Functional programming in JavaScript world</li>
-						<li>Is whole Angular written in OOP style?</li>
+						<li>Functional programming in Angular world</li>
 						<li>Functional programming in Angular - practical guide</li>
 					</ul>
 				</section>
@@ -53,15 +53,62 @@
 						</p>
 					</section>
 					<section>
+						<h3> History </h3>
+						<p> At the beginning, Computers were really slow</p>
+						<ol>
+							<li>Start from the Von Neumann Architecture and add abstraction. (C 1972)</li>
+							<li>Start from Mathematics and remove abstraction. (Lisp 1958)</li>
+						</ol>
+					</section>
+					<section>
+						<p> Object-oriented Programming cannot save us anymore </p>
+						<ul>
+							<li>Time when we'd have applications running distributed and concurrently finally has come. </li>
+							<li>Almost every modern and maintained language is going to rely on FP features soon. And most of them already do.</li>
+							<li>Java and C++11 already got lambda expressions.</li>
+						</ul>
+					</section>
+					<section>
+						<h3> Languages </h3>
+						<a href="https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Pure" target="_blank"> Functional programming languages</a>
+					</section>
+					<section>
 						<h3> Trends </h3>
 						<a href="https://trends.google.pl/trends/explore?date=all&q=functional%20programming,object%20oriented%20programming,oop" target="_blank">Global</a>
 						<a href="https://trends.google.pl/trends/explore?q=functional%20programming%20javascript,object%20oriented%20programming%20javascript,oop%20javascript" target="_blank">JavaScript</a>
 					</section>
 					<section>
+						<img src="./matrix.jpg" />
+					</section>
+					<section>
+						<pre><code class="hljs" data-trim contenteditable>
+function clickFn() {
+  console.log('clicked');
+}
+const el = document.getElementById("t"); 
+el.addEventListener(
+  'click',
+  clickFn,
+  false
+); 
+						</code></pre>
+					</section>
+					<section>
 						<h3> Concepts </h3>
 					</section>
 					<section>
-						<h3> First-class and higher-order functions </h3>
+						<h3> First-class functions </h3>
+						<blockquote>First-Class Functions mean that you can store functions into a variable.</blockquote>
+					</section>
+					<section>
+						<pre><code class="hljs" data-trim contenteditable>
+const add = function(a, b){
+  return a + b
+} 
+						</code></pre>
+					</section>
+					<section>
+						<h3> Higher-order functions </h3>
 						<blockquote>Higher-order functions are functions that can either take other functions as arguments or return them as results.</blockquote>
 					</section>
 					<section>
@@ -108,9 +155,99 @@ function sum(list, acc = 0) {
 sum([1,2,3,4]); //10
 						</code></pre>
 					</section>
+				</section>
+				<section>
 					<section>
-						<h3> Languages </h3>
-						<a href="https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Pure" target="_blank"> Functional programming languages</a>
+						<h1>Functional programming in JavaScript world</h1>
+					</section>
+					<section>
+						<h3> RxJS </h3>
+						<img height="200" src="./rxjs.png" />
+						<p> RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. </p> 
+					</section>
+					<section>
+						<h3> Cycle.js </h3>
+						<img height="200" src="./cycle.png" />
+						<p> A functional and reactive JavaScript framework for predictable code. </p> 
+					</section>
+					<section>
+						<h3> Ramda </h3>
+						<img height="200" src="./ramda.png" />
+						<p>A practical functional library for JavaScript programmers. </p> 
+					</section>
+					<section>
+						<h3> Redux </h3>
+						<img height="200" src="./redux.png" />
+						<p>Predictable state container for JavaScript apps. </p> 
+					</section>
+					<section>
+						<h3> Elm </h3>
+						<img height="200" src="./elm.png" />
+						<p> Elm is purely functional, and is developed with emphasis on usability, performance, and robustness. </p> 
+					</section>
+					<section>
+						<img src="./diagram1.png" />
+					</section>
+					<section>
+						<img src="./diagram2.png" />
+					</section>
+					<section>
+						<h3> Trends </h3>
+						<a href="https://trends.google.pl/trends/explore?q=functional%20programming%20javascript,object%20oriented%20programming%20javascript,oop%20javascript" target="_blank">JavaScript</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Functional programming in Angular world</h1>
+					</section>
+					<section>
+						<h3>Angular Component</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+@Component({
+  selector: 'app-some',
+  templateUrl: './some.component.html',
+  styleUrls: ['./some.component.scss']
+})
+export class SomeComponent implements OnInit {
+  public data: Observable;
+  constructor(private http: Http) {
+    this.data = this.http.get('someUrl')
+    .map(({ data }) => data);
+  }
+
+  ngOnInit() {
+  }
+}
+						</code></pre>
+					</section>
+					<section>
+						<img src="./diagram3.png" />
+					</section>
+					<section>
+						<h3>Angular Service</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+@Component({
+  selector: 'app-some',
+  templateUrl: './some.component.html',
+  styleUrls: ['./some.component.scss']
+})
+export class SomeComponent implements OnInit {
+  public data: Observable;
+  constructor(private http: Http, private store: Store) {
+    this.data = this.http.get('someUrl')
+    .map(({ data }) => ({type: STORE_DATA, payload: data}))
+    .subscribe(this.store.dispatch);
+  }
+}
+						</code></pre>
+					</section>
+					<section>
+						<img src="./diagram4.png" />
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Functional programming in Angular - practical guide</h1>
 					</section>
 				</section>
 			</div>
