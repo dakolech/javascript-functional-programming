@@ -27,12 +27,19 @@
 				<section>
 					<h1>Daniel Koza</h1>
 					<ul>
-						<li> 2 years of JavaScript experience </li>
+						<li> 2 years of commercial JavaScript experience </li>
 						<li> AngularJS, Angular, Meteor, React... </li>
-						<li> Using Angular since RC </li>
-						<li> One (two) built appliaction in the Angular </li>
-						<li> Funtional programming fan </li>
+						<li> Using Angular since RC 1 </li>
+						<li> One (two) built application in the Angular (blog.briisk.co) </li>
+						<li> Functional programming fan </li>
 					</ul>
+          <aside class="notes">
+            <ul>
+              <li>Blog with custom CMS.</li>
+              <li>I used to be a <b>fan of oop with ES6 syntax</b>, with <b>design patterns and inheritence</b>, but now, in fact I hate it.</li>
+              <li>Some time ago I've heard, that if you learn functional programming, you won't come back to oop. <b>I can confirm that this statement is true.</b></li>
+            </ul>
+          </aside>
 				</section>
 				<section>
 					<h2>Agenda</h2>
@@ -42,6 +49,14 @@
 						<li>Functional programming in Angular world</li>
 						<li>Functional programming in Angular - practical guide</li>
 					</ul>
+          <aside class="notes">
+            <ul>
+              <li>I will explain what does it mean to write code in <b>functional way.</b> Present a little bit of history and show some main concepts.</li>
+              <li>Then I will present some trends in JavaScript world connected with functional programming. <b> Libraries, frameworks etc.</b></li>
+              <li>Then I will explain, that <b>Angular is not fully written in oo style</b></li>
+              <li>And at the end I will show how to write functional code in angular framework</li>
+            </ul>
+          </aside>
 				</section>
 				<section>
 					<section>
@@ -49,9 +64,22 @@
 					</section>
 					<section>
 						<p cite="https://en.wikipedia.org/wiki/Functional_programming">
-						&ldquo;a <b><u>style</u></b> of building the structure and elements of computer programs — that treats computation as the evaluation of mathematical functions and <b><u>avoids changing-state and mutable data</u></b>. It is a declarative programming paradigm, which means programming is done with expressions or declarations instead of statements. In functional code, the output value of a function depends only on the arguments that are passed to the function.&rdquo;
+						&ldquo;a <b><u>style</u></b> of building the structure and elements of computer programs — that treats computation as t<b><u>he evaluation of mathematical functions and avoids changing-state and mutable data</u></b>. It is a declarative programming paradigm, which means programming is done with expressions or declarations instead of statements. In functional code, the output value of a function depends only on the arguments that are passed to the function.&rdquo;
 						</p>
+            <aside class="notes">
+              <ul>
+                <li>I won't read the <b>full definition</b>, you can do it by yourself later. Most important are <b>bold words</b>. So this is a <b>style of writing code</b>, if you are using <b>multiparadigm programming language</b>.</li>
+                <li>And as you can see there is math with functions. You should <b>go back to school</b> and remind what does it mean function, if you want to learn fp.</li>
+                <li>Also there is nice part: changing-state and mutable data. <b>The opposite to oop</b>, where we are always mutating instance of the class. In fp you shouldn't do that.</li>
+              </ul>
+            </aside>
 					</section>
+          <section>
+            <img height="500" src="./mutate.jpeg" />
+            <aside class="notes">
+              If I were Jules, I would probably do this.
+            </aside>
+          </section>
 					<section>
 						<h3> History </h3>
 						<p> At the beginning, Computers were really slow</p>
@@ -59,6 +87,13 @@
 							<li>Start from the Von Neumann Architecture and add abstraction. (C 1972)</li>
 							<li>Start from Mathematics and remove abstraction. (Lisp 1958)</li>
 						</ol>
+            <aside class="notes">
+              <ul>
+                <li>And I mean really, really slow. So the <b>first engineers</b> had to figure out, how to <b>design programming language</b> on these machines. So they created two mindsets. See, functional programming <b>isn't nothing new.</b></li>
+                <li> Unfortunately these computers didn't have much <b>processing power</b>b to deal with abstractions from all the way down to evaluate functional programs.</li>
+                <li>So Lisp was deadly slow in that time and <b>imperative programming</b> won that battle. But today we have much <b>powerful computers</b>, so fp languages got <b>their second chance.</b></li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<p> Object-oriented Programming cannot save us anymore </p>
@@ -71,11 +106,21 @@
 					<section>
 						<h3> Languages </h3>
 						<a href="https://en.wikipedia.org/wiki/List_of_programming_languages_by_type#Pure" target="_blank"> Functional programming languages</a>
+            <aside class="notes">
+              <ul>
+                <li>We can divide functional programing languages to pure an impure. Pure means, that language implements all the <b>fp concepts</b> and <b>avoids anti-patterns.</b></li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<h3> Trends </h3>
 						<a href="https://trends.google.pl/trends/explore?date=all&q=functional%20programming,object%20oriented%20programming,oop" target="_blank">Global</a>
 						<a href="https://trends.google.pl/trends/explore?q=functional%20programming%20javascript,object%20oriented%20programming%20javascript,oop%20javascript" target="_blank">JavaScript</a>
+            <aside class="notes">
+              <ul>
+                <li>And with google trends we can see, that functional programming is rising a little bit in general. But in JavaScript, we can see bigger rise of the fp.</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<img src="./matrix.jpg" />
@@ -92,10 +137,33 @@ el.addEventListener(
   false
 ); 
 						</code></pre>
+            <aside class="notes">
+              <ul>
+                <li> I think that everyone started learning JavaScript with event listeners, promises, callbacks, etc. In fact, this is a fp concept</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<h3> Concepts </h3>
 					</section>
+          <section>
+            <h3> Immutable data </h3>
+            <blockquote>An immutable object (unchangeable object) is an object whose state cannot be modified after it is created.</blockquote>
+          </section>
+          <section>
+						<pre><code class="hljs" data-trim contenteditable>
+// bad
+var a = 1;
+a = a + 1;
+a === 1; // false
+						</code></pre>
+            <aside class="notes">
+              <ul>
+                <li> It's really easier to maintain immutable object. If one part of the application uses one object, and the other uses the same object, they will interupt each other, fi they will mutate the object.</li>
+                <li>And the other part of the application won't know if the object has changed.</li>
+              </ul>
+            </aside>
+          </section>
 					<section>
 						<h3> First-class functions </h3>
 						<blockquote>First-Class Functions mean that you can store functions into a variable.</blockquote>
@@ -106,6 +174,11 @@ const add = function(a, b){
   return a + b
 } 
 						</code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Very simple and frequently used, but also very powerful with the next concept.</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<h3> Higher-order functions </h3>
@@ -124,6 +197,11 @@ function add(a) {
 }
 add(2)(3); //5
 						</code></pre>
+            <aside class="notes">
+              <ul>
+                <li>And this is probably most used and the best concept in JavaScript from fp. </li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<h3> Pure functions </h3>
@@ -139,6 +217,12 @@ add(2,3); //5
 ...
 add(2,3); //5
 						</code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Unfortunately we can't avoid <b>side effects</b> on the Frontend, eg server request. But we should always check if it's possible to implement pure function. </li>
+                <li> Why? It's easier to maintain this kind of functions and also test them.</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<h3> Recursion </h3>
@@ -154,6 +238,13 @@ function sum(list, acc = 0) {
 }
 sum([1,2,3,4]); //10
 						</code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Instead of loops we can use recursion. JavaScript ES6 has implemented tail call optimization, so it's effective.</li>
+                <li> Why? Recursion is more readable. If you know the how the recursion works of course. It's a declarative solution, opposite of the imperative. </li>
+                <li>We don't need to code every step, we just need to declare how it should look like and when it should ends.</li>
+              </ul>
+            </aside>
 					</section>
 				</section>
 				<section>
@@ -163,22 +254,44 @@ sum([1,2,3,4]); //10
 					<section>
 						<h3> RxJS </h3>
 						<img height="200" src="./rxjs.png" />
-						<p> RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. </p> 
+						<p> RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. </p>
+            <aside class="notes">
+              <ul>
+                <li>It's a fully functional library, without any side effects.</li>
+            </aside>
 					</section>
 					<section>
 						<h3> Cycle.js </h3>
 						<img height="200" src="./cycle.png" />
-						<p> A functional and reactive JavaScript framework for predictable code. </p> 
+						<p> A functional and reactive JavaScript framework for predictable code. </p>
+            <aside class="notes">
+              <ul>
+                <li>It's a fully functional and reactive framework, of course with side effects, but handled in a proper way.</li>
+                <li>It's a proof that we can have this kind of frameworks on the frontend.</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<h3> Ramda </h3>
 						<img height="200" src="./ramda.png" />
-						<p>A practical functional library for JavaScript programmers. </p> 
+						<p>A practical functional library for JavaScript programmers. </p>
+            <aside class="notes">
+              <ul>
+                <li>It's a fully functional library. Set of utils.</li>
+                <li>Competition of Lodash or Underscore. It can be used in every JS environment (BE, FE), with every framework.</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<h3> Redux </h3>
 						<img height="200" src="./redux.png" />
-						<p>Predictable state container for JavaScript apps. </p> 
+						<p>Predictable state container for JavaScript apps. </p>
+            <aside class="notes">
+              <ul>
+                <li>Library for handling state changes in the application. It can be used with every framework. Comes from React community.</li>
+                <li>In angular ngrx/store</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<h3> Elm </h3>
@@ -187,13 +300,29 @@ sum([1,2,3,4]); //10
 					</section>
 					<section>
 						<img src="./diagram1.png" />
+            <aside class="notes">
+              <ul>
+                <li>Nice diagram which represents where we can put these tools.</li>
+                <li>As you can see these are very functional tools, redux is close to them. Angular is closer oop then react.</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<img src="./diagram2.png" />
+            <aside class="notes">
+              <ul>
+                <li>If we will use react with redux, then we will be closer to the functional programming than oop.</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
 						<h3> Trends </h3>
 						<a href="https://trends.google.pl/trends/explore?q=functional%20programming%20javascript,object%20oriented%20programming%20javascript,oop%20javascript" target="_blank">JavaScript</a>
+            <aside class="notes">
+              <ul>
+                <li>Let's see again, how trends looks like in js world. See, fp is rising.</li>
+              </ul>
+            </aside>
 					</section>
 				</section>
 				<section>
@@ -201,7 +330,7 @@ sum([1,2,3,4]); //10
 						<h1>Functional programming in Angular world</h1>
 					</section>
 					<section>
-						<h3>Angular Component</h3>
+						<h3>Angular Component with rxjs</h3>
 						<pre><code class="hljs" data-trim contenteditable>
 @Component({
   selector: 'app-some',
@@ -224,7 +353,7 @@ export class SomeComponent implements OnInit {
 						<img src="./diagram3.png" />
 					</section>
 					<section>
-						<h3>Angular Service</h3>
+						<h3>Angular Component with rxjs and store</h3>
 						<pre><code class="hljs" data-trim contenteditable>
 @Component({
   selector: 'app-some',
@@ -249,6 +378,9 @@ export class SomeComponent implements OnInit {
 					<section>
 						<h1>Functional programming in Angular - practical guide</h1>
 					</section>
+          <section>
+            <h3>Don't fight with the framework</h3>
+          </section>
 				</section>
 			</div>
 		</div>
