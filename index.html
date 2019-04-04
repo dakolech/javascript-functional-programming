@@ -25,41 +25,7 @@
 <div class="reveal">
   <div class="slides">
     <section>
-      <h3>Functional programming in the object oriented Angular - does it make sense?</h3>
-    </section>
-    <section>
-      <h1>Daniel Koza</h1>
-      <ul>
-        <li> 2 years of commercial JavaScript experience </li>
-        <li> AngularJS, Angular, Meteor, React... </li>
-        <li> Using Angular since RC 1 </li>
-        <li> One (two) built application in the Angular (blog.briisk.co) </li>
-        <li> Functional programming fan </li>
-      </ul>
-      <aside class="notes">
-        <ul>
-          <li>Blog with custom CMS.</li>
-          <li>I used to be a <b>fan of oop with ES6 syntax</b>, with <b>design patterns and inheritence</b>, but now, in fact I hate it.</li>
-          <li>Some time ago I've heard, that if you learn functional programming, you won't come back to oop. <b>I can confirm that this statement is true.</b></li>
-        </ul>
-      </aside>
-    </section>
-    <section>
-      <h2>Agenda</h2>
-      <ul>
-        <li>What is functional programming?</li>
-        <li>Functional programming in JavaScript world</li>
-        <li>Functional programming in Angular world</li>
-        <li>Functional programming in Angular - practical guide</li>
-      </ul>
-      <aside class="notes">
-        <ul>
-          <li>I will explain what does it mean to write code in <b>functional way.</b> Present a little bit of history and show some main concepts.</li>
-          <li>Then I will present some trends in JavaScript world connected with functional programming. <b> Libraries, frameworks etc.</b></li>
-          <li>Then I will explain, that <b>Angular is not fully written in oo style</b></li>
-          <li>And at the end I will show how to write functional code in angular framework</li>
-        </ul>
-      </aside>
+      <h3>Functional programming in JavaScript</h3>
     </section>
     <section>
       <section>
@@ -118,7 +84,7 @@
       <section>
         <h3> Trends </h3>
         <a href="https://trends.google.pl/trends/explore?date=all&q=functional%20programming,object%20oriented%20programming,oop" target="_blank">Global</a>
-        <a href="https://trends.google.pl/trends/explore?q=functional%20programming%20javascript,object%20oriented%20programming%20javascript,oop%20javascript" target="_blank">JavaScript</a>
+        <a href="https://trends.google.pl/trends/explore?date=all&q=functional%20programming%20javascript,object%20oriented%20programming%20javascript,oop%20javascript" target="_blank">JavaScript</a>
         <aside class="notes">
           <ul>
             <li>And with google trends we can see, that functional programming is rising a little bit in general. But in JavaScript, we can see bigger rise of the fp.</li>
@@ -337,63 +303,6 @@ sum([1,2,3,4]); //10
             <li>Let's see again, how trends looks like in js world. See, fp is rising.</li>
           </ul>
         </aside>
-      </section>
-    </section>
-    <section>
-      <section>
-        <h1>Functional programming in Angular world</h1>
-      </section>
-      <section>
-        <h3>Angular Component with rxjs</h3>
-        <pre><code class="hljs" data-trim contenteditable>
-@Component({
-  selector: 'app-some',
-  templateUrl: './some.component.html',
-  styleUrls: ['./some.component.scss']
-})
-export class SomeComponent implements OnInit {
-  public data: Observable;
-  constructor(private http: Http) {
-    this.data = this.http.get('someUrl')
-    .map(({ data }) => data);
-  }
-
-  ngOnInit() {
-  }
-}
-						</code></pre>
-      </section>
-      <section>
-        <img src="./diagram3.png" />
-      </section>
-      <section>
-        <h3>Angular Component with rxjs and store</h3>
-        <pre><code class="hljs" data-trim contenteditable>
-@Component({
-  selector: 'app-some',
-  templateUrl: './some.component.html',
-  styleUrls: ['./some.component.scss']
-})
-export class SomeComponent implements OnInit {
-  public data: Observable;
-  constructor(private http: Http, private store: Store) {
-    this.data = this.http.get('someUrl')
-    .map(({ data }) => ({type: STORE_DATA, payload: data}))
-    .subscribe(this.store.dispatch);
-  }
-}
-						</code></pre>
-      </section>
-      <section>
-        <img src="./diagram4.png" />
-      </section>
-    </section>
-    <section>
-      <section>
-        <h1>Functional programming in Angular - practical guide</h1>
-      </section>
-      <section>
-        <h3>Don't fight with the framework</h3>
       </section>
     </section>
   </div>
